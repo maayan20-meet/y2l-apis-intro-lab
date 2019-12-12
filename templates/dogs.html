@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dogs</title>
+</head>
+<body>
+	{% for bread, types in breads.items() %}
+
+		<h4>Bread: {{bread}}</h4>
+
+		{% if not types:%}
+
+			<p>No types</p>
+
+		{% else: %}
+			<h5>Types:</h5>
+
+			<ul>
+				{% for type in types %}
+					<p>{{type}}</p>
+				{% endfor %}
+			</ul>
+		{% endif %}
+
+	{% endfor %}
+</body>
+</html>

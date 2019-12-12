@@ -1,1 +1,26 @@
-Parse the Json string in app.py to replace this text!
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TV Shows!</title>
+</head>
+<body>
+
+	{% for show in shows %}
+	<br>
+		<h3>{{show['name']}}</h3>
+		<p>Language: {{show['language']}}</p>
+		<p>Genres:</p>
+
+		<ul>
+		{% for genre in show['genres'] %}
+
+			<li>{{genre}}</li>
+
+		{% endfor %}
+		</ul>
+
+		<a href="{{show['url']}}">Link to show</a>
+	<br>
+	{% endfor %}
+</body>
+</html>
