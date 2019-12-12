@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dog Picture</title>
+</head>
+<body>
+	<form action="/dogpic" method="POST">
+		<input type="text" name="breed" placeholder="Enter breed here">
+		<input type="submit" value="Enter">
+	</form>
+
+	{% if pic['status'] == "success":%}
+
+		<img src="{{pic['message']}}">
+
+	{% endif %}
+</body>
+</html>

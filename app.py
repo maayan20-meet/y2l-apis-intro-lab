@@ -1,6 +1,6 @@
 import json
 import requests
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 app = Flask(__name__)
 
 @app.route('/')
@@ -81,7 +81,21 @@ def dog_breeds():
 
     parsed_content = json.loads(response.content)
 
-    return render_template('dogs.html', breads=parsed_content['message'])
+    return render_template('dogs.html', breeds=parsed_content['message'])
+
+@app.route('/dogpic', methods=['GET', 'POST'])
+def dogpic():
+
+	if request.method == 'GET':
+		return render_template('dogpic.html', pic=0)
+
+	else:
+
+		response = requests.get("https://dog.ceo/api/breed/%s/images/random" % request.form['breed'])
+		parsed_content = json.loads(response.content)
+		print(parsed_content)
+
+		return render_template('dogpic.html', pic=parsed_content)
 
 if __name__ == '__main__':
     app.run(debug=True)
